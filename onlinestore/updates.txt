@@ -1,0 +1,138 @@
+update inventory_overview.php to show all available products with thier:
+Product Id
+Product Name
+Category
+Description
+price
+created at
+Supplier
+Quantity
+Product Status
+Product Image
+
+
+
+
+
+Create monthly order report table:
+customer_name 
+customer_email
+customer_phone
+order_id (reference order_id from order tracking table)
+created_at (reference created_at from order tracking table)
+order_status (reference order_status from order tracking table)
+order_total (reference order_status from order tracking table)
+
+
+update monthly order report table to:
+reference order_id from order tracking table
+reference order_status from order tracking table
+reference created_at from order tracking table
+
+
+
+
+
+module to work on:
+EDIT PRODUCT
+MONTHLY ORDER REPORT
+ORDER ALERT
+LOW QUANTITY ALERT
+
+
+
+update monthly_order_report.php to fetch report from:
+order items table
+order tracking table
+and display result on the chart
+
+
+
+
+pending', 'shipped', 'delivered', 'canceled'
+
+
+
+
+ALTER TABLE users
+ADD COLUMN role_id ENUM('user', 'admin') DEFAULT 'user';
+
+
+ALTER TABLE roles
+ADD COLUMN description TEXT;
+
+
+
+ADD COLUMN user_id INT AUTO_INCREMENT PRIMARY KEY,
+ADD COLUMN username VARCHAR(50) NOT NULL UNIQUE,
+ADD COLUMN email VARCHAR(100) NOT NULL UNIQUE,
+ADD COLUMN full_name VARCHAR(100),
+
+
+
+ALTER TABLE users
+DROP FOREIGN KEY fk_role;
+
+
+CREATE TABLE roles (
+    role_id INT AUTO_INCREMENT PRIMARY KEY,
+    role_name VARCHAR(50) NOT NULL UNIQUE,
+    description TEXT
+);
+
+
+
+
+INSERT INTO roles (role_name, description) VALUES
+('user', 'Standard user with limited access'),
+('manager', 'Manager with additional privileges'),
+('admin', 'Administrator with full access');
+
+
+
+
+update roles table with:
+user
+manager
+admin
+
+
+
+
+ALTER TABLE users
+ADD CONSTRAINT fk_role
+FOREIGN KEY (role_id) REFERENCES roles(role_id)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+
+
+
+create hide_products.php so that admin can select some products to hide from users
+
+
+
+CREATE TABLE order_payment (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    user_id INT NOT NULL,
+    payment_method ENUM('Credit Card', 'Debit Card', 'PayPal', 'Bank Transfer', 'Cash On Delivery') NOT NULL,
+    payment_status ENUM('Pending', 'Completed', 'Failed', 'Refunded') NOT NULL,
+    payment_date DATETIME NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+create single_product.php to display individual product details from the product table
+
+
+
+create continue_shopping.php to display all available products according to their category
+add 'Add To Cart' button to each product
+add 'Product Detail' button to each product
+
+
+
+
+correct this code:
