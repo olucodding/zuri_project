@@ -1,0 +1,126 @@
+"cart_id","user_id","product_id","quantity","product_name","product_image","total_price","cart_items","created_at","product_price"
+"62","4","2","7","black grey double monkstraps","black-grey-double-monkstraps-PARSONS.jpg","1890",NULL,"2024-08-20 19:47:47","270"
+"63","4","1","8","black grey double monkstraps","black-grey-double-monkstraps-PARSONS.jpg","2120",NULL,"2024-08-20 19:47:51","265"
+"64","4","3","2","black grey double monkstraps","black-grey-double-monkstraps-PARSONS.jpg","510",NULL,"2024-08-20 19:47:55","255"
+"65","4","4","4","brown croco moc-toe shoes","brown-croco-moc-toe-EAVES.jpg","1100",NULL,"2024-08-20 19:48:01","275"
+"manager_id","username","password","full_name","email","phone_number","created_at","updated_at","status"
+"1","manager1","$2y$10$KJ4qBYruHvK8usqYg3cdQ.xrU3FcX1RjOBk88Ro7rZqMj1OEul2xC","Mager Testing","manager@example.com","2348000000001","2024-08-11 19:16:16","2024-08-11 19:16:16","active"
+"3","manager2","$2y$10$p5cKQnvePbZPhxTehDx/lOHyP1dSNohE/f7VpSLLTWk2DYu7ao97O","manager2 teasting2","manager2@example.com","2348000000002","2024-08-11 19:25:53","2024-08-11 19:25:53","active"
+"order_id","user_id","total","created_at","customer_name","order_date","product_status","product_name","product_image","product_id","tracking_number","carrier","shipping_status","shipping_address","payment_method","payment_status","order_status"
+"10","1","7573.38","2024-08-20 10:36:05",NULL,NULL,"pending",NULL,NULL,NULL,"0000000001","DHL","Shipped","112 LATEEF JAKANDE CRESCENT
+OFF ALAKIJA EXTENSION
+LAGOS,
+NIGERIA","Bank Transfer","Pending",
+"11","2","14292.13","2024-08-20 11:04:30",NULL,NULL,"pending",NULL,NULL,NULL,NULL,NULL,"Pending","112 LATEEF JAKANDE CRESCENT
+OFF ALAKIJA EXTENSION
+LAGOS,
+NIGERIA","Bank Transfer","Pending",
+"12","2","1144.88","2024-08-20 12:54:36",NULL,NULL,"pending",NULL,NULL,NULL,NULL,NULL,"Pending","112 LATEEF JAKANDE CRESCENT
+OFF ALAKIJA EXTENSION
+LAGOS,
+NIGERIA","Bank Transfer","Pending",
+"13","2","0.00","2024-08-20 12:54:36",NULL,NULL,"pending",NULL,NULL,NULL,NULL,NULL,"Pending","112 LATEEF JAKANDE CRESCENT
+OFF ALAKIJA EXTENSION
+LAGOS,
+NIGERIA","Bank Transfer","Pending","pending"
+"14","3","1144.88","2024-08-20 12:57:48",NULL,NULL,"pending",NULL,NULL,NULL,NULL,NULL,"Pending","112 LATEEF JAKANDE CRESCENT
+OFF ALAKIJA EXTENSION
+LAGOS,
+NIGERIA","Bank Transfer","Pending",
+"15","3","854.63","2024-08-20 13:03:59",NULL,NULL,"pending",NULL,NULL,NULL,NULL,NULL,"Pending","112 LATEEF JAKANDE CRESCENT
+OFF ALAKIJA EXTENSION
+LAGOS,
+NIGERIA","Bank Transfer","Pending",
+"16","3","12195.88","2024-08-20 13:29:19",NULL,NULL,"pending",NULL,NULL,NULL,NULL,NULL,"Pending","112 LATEEF JAKANDE CRESCENT
+OFF ALAKIJA EXTENSION
+LAGOS,
+NIGERIA","Bank Transfer","Pending",
+"17","1","5154.63","2024-08-20 13:50:58",NULL,NULL,"pending",NULL,NULL,NULL,NULL,NULL,"Pending","112 LATEEF JAKANDE CRESCENT
+OFF ALAKIJA EXTENSION
+LAGOS,
+NIGERIA","Bank Transfer","Pending",
+"18","1","1144.88","2024-08-20 13:53:38",NULL,NULL,"pending",NULL,NULL,NULL,NULL,NULL,"Pending","112 LATEEF JAKANDE CRESCENT
+OFF ALAKIJA EXTENSION
+LAGOS,
+NIGERIA","Bank Transfer","Pending",
+"19","1","0.00","2024-08-20 13:53:39",NULL,NULL,"pending",NULL,NULL,NULL,NULL,NULL,"Pending","112 LATEEF JAKANDE CRESCENT
+OFF ALAKIJA EXTENSION
+LAGOS,
+NIGERIA","Bank Transfer","Pending",
+"20","1","849.25","2024-08-20 14:06:49",NULL,NULL,"pending",NULL,NULL,NULL,NULL,NULL,"Pending","112 LATEEF JAKANDE CRESCENT
+OFF ALAKIJA EXTENSION
+LAGOS,
+NIGERIA","Bank Transfer","Pending",
+"21","1","1472.75","2024-08-20 14:12:04",NULL,NULL,"pending",NULL,NULL,NULL,NULL,NULL,"Pending","112 LATEEF JAKANDE CRESCENT
+OFF ALAKIJA EXTENSION
+LAGOS,
+NIGERIA","Bank Transfer","Pending",
+"22","4","8600.00","2024-08-20 19:33:07",NULL,NULL,"pending",NULL,NULL,NULL,NULL,NULL,"Pending","112 LATEEF JAKANDE CRESCENT
+OFF ALAKIJA EXTENSION
+LAGOS,
+NIGERIA","Bank Transfer","Pending",
+"23","4","5724.38","2024-08-20 19:34:45",NULL,NULL,"pending",NULL,NULL,NULL,NULL,NULL,"Pending","112 LATEEF JAKANDE CRESCENT
+OFF ALAKIJA EXTENSION
+LAGOS,
+NIGERIA","Bank Transfer","Pending",
+"order_id","order_name","user_id","product_id","product_name","product_image","quantity","order_date","shipping_address","order_status","total_price","created_at","updated_at"
+"id","order_id","product_id","quantity","price","created_at","product_image","shipping_address","user_id"
+"8","10","2","4","270.00","2024-08-20 10:36:05",NULL,NULL,"0"
+"9","10","1","10","265.00","2024-08-20 10:36:05",NULL,NULL,"0"
+"10","10","3","13","255.00","2024-08-20 10:36:05",NULL,NULL,"0"
+"11","11","1","11","265.00","2024-08-20 11:04:30",NULL,NULL,"0"
+"12","11","2","12","270.00","2024-08-20 11:04:30",NULL,NULL,"0"
+"13","11","3","28","255.00","2024-08-20 11:04:30",NULL,NULL,"0"
+"14","12","4","1","275.00","2024-08-20 12:54:36",NULL,NULL,"0"
+"15","12","2","1","270.00","2024-08-20 12:54:36",NULL,NULL,"0"
+"16","12","1","1","265.00","2024-08-20 12:54:36",NULL,NULL,"0"
+"17","12","3","1","255.00","2024-08-20 12:54:36",NULL,NULL,"0"
+"18","14","2","1","270.00","2024-08-20 12:57:48",NULL,NULL,"0"
+"19","14","3","1","255.00","2024-08-20 12:57:48",NULL,NULL,"0"
+"20","14","1","1","265.00","2024-08-20 12:57:48",NULL,NULL,"0"
+"21","14","4","1","275.00","2024-08-20 12:57:48",NULL,NULL,"0"
+"22","15","3","1","255.00","2024-08-20 13:03:59",NULL,NULL,"0"
+"23","15","1","1","265.00","2024-08-20 13:03:59",NULL,NULL,"0"
+"24","15","4","1","275.00","2024-08-20 13:03:59",NULL,NULL,"0"
+"25","16","1","12","265.00","2024-08-20 13:29:19",NULL,NULL,"0"
+"26","16","4","13","275.00","2024-08-20 13:29:19",NULL,NULL,"0"
+"27","16","2","17","270.00","2024-08-20 13:29:19",NULL,NULL,"0"
+"28","17","3","5","255.00","2024-08-20 13:50:58",NULL,NULL,"0"
+"29","17","2","3","270.00","2024-08-20 13:50:58",NULL,NULL,"0"
+"30","17","1","4","265.00","2024-08-20 13:50:58",NULL,NULL,"0"
+"31","17","4","6","275.00","2024-08-20 13:50:58",NULL,NULL,"0"
+"32","18","2","1","270.00","2024-08-20 13:53:38",NULL,NULL,"0"
+"33","18","4","1","275.00","2024-08-20 13:53:38",NULL,NULL,"0"
+"34","18","3","1","255.00","2024-08-20 13:53:38",NULL,NULL,"0"
+"35","18","1","1","265.00","2024-08-20 13:53:38",NULL,NULL,"0"
+"36","20","2","1","270.00","2024-08-20 14:06:49",NULL,NULL,"0"
+"37","20","3","1","255.00","2024-08-20 14:06:49",NULL,NULL,"0"
+"38","20","1","1","265.00","2024-08-20 14:06:49",NULL,NULL,"0"
+"39","21","2","1","270.00","2024-08-20 14:12:04",NULL,NULL,"0"
+"40","21","4","4","275.00","2024-08-20 14:12:04",NULL,NULL,"0"
+"41","22","1","8","265.00","2024-08-20 19:33:07",NULL,NULL,"0"
+"42","22","2","6","270.00","2024-08-20 19:33:07",NULL,NULL,"0"
+"43","22","3","7","255.00","2024-08-20 19:33:07",NULL,NULL,"0"
+"44","22","4","9","275.00","2024-08-20 19:33:07",NULL,NULL,"0"
+"45","23","2","7","270.00","2024-08-20 19:34:45",NULL,NULL,"0"
+"46","23","1","4","265.00","2024-08-20 19:34:45",NULL,NULL,"0"
+"47","23","3","5","255.00","2024-08-20 19:34:45",NULL,NULL,"0"
+"48","23","4","4","275.00","2024-08-20 19:34:45",NULL,NULL,"0"
+"payment_id","order_id","user_id","payment_method","payment_status","payment_date","amount"
+"tracking_id","order_id","status","created_at","updated_at","notes"
+"product_id","product_name","description","price","created_at","category","brand","supplier","quantity","product_image","product_status","hidden"
+"1","black grey double monkstraps","black grey double monkstraps","265.99","2024-08-19 22:34:58","CUSTOM SHOES","PARSONS",,"130","black-grey-double-monkstraps-PARSONS.jpg","active","1"
+"2","black grey double monkstraps","black grey double monkstraps","270.00","2024-08-18 20:45:50","CUSTOM SHOES","PARSONS",,"68","black-grey-double-monkstraps-PARSONS.jpg","active","1"
+"3","black grey double monkstraps","black grey double monkstraps","255.99","2024-08-18 20:57:18","CUSTOM SHOES","PARSONS",,"105","black-grey-double-monkstraps-PARSONS.jpg","active","0"
+"4","brown croco moc-toe shoes",,"275.99","2024-08-18 21:27:00","CUSTOM SHOES","EAVES",,"121","brown-croco-moc-toe-EAVES.jpg","active","0"
+"role_id","role_name","description"
+"1","user","Standard user with limited access"
+"2","manager","Manager with additional privileges"
+"3","admin","Administrator with full access"
+"id","name","contact_name","contact_email","contact_phone","address"
+"user_id","username","email","password","created_at","profile_picture","shipping_apt_no","shipping_street_address","shipping_state","shipping_country","billing_apt_no","billing_street_address","billing_state","billing_country","phone_number","name","role_id","full_name"
+"1","user1","user1@sample.com","$2y$10$h3lqjbpyYIWK6337nIRmeea/bLB00EZDQSHi6z3r/SFcTWvpynIaC","2024-08-10 13:26:21",NULL,"65746","6476","647","46756","65756","657456","6576","65746","65y56",NULL,"1","yu56"
+"2","user2","user2@example.com","$2y$10$eNRnUF13jQ5nQo0t4.hAb.zMzYT8cDcpVJL1zn.gX3OiYnGjWCIuC","2024-08-10 14:00:39",NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,"1",NULL
+"3","user3","user3@example.com","$2y$10$a3bDMisf9r73ezZzDhD.v.2a.iCQWxRoqWhwLt3oF3qrzqM9RCusm","2024-08-10 14:05:20",NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,"1",NULL
+"4","user4","user4@example.com","$2y$10$1fFBzTCb2eOUz/pnonzNheoSXKGHFtDxzNIgGJLHdp2RtYARJ68qG","2024-08-10 19:19:07",NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,"1",NULL
+"5","user5","user5@example.com","$2y$10$MO4NjLVJ8OtNWtOcmEo0KeHgeY0g.E5iSK55xc8la5TvUQjWx4pV.","2024-08-15 07:49:14",NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,"1","user5 testing"

@@ -1,0 +1,328 @@
+update inventory_overview.php to show all available products with thier:
+Product Id
+Product Name
+Category
+Description
+price
+created at
+Supplier
+Quantity
+Product Status
+Product Image
+
+
+
+
+
+Create monthly order report table:
+customer_name 
+customer_email
+customer_phone
+order_id (reference order_id from order tracking table)
+created_at (reference created_at from order tracking table)
+order_status (reference order_status from order tracking table)
+order_total (reference order_status from order tracking table)
+
+
+update monthly order report table to:
+reference order_id from order tracking table
+reference order_status from order tracking table
+reference created_at from order tracking table
+
+
+
+
+
+module to work on:
+EDIT PRODUCT
+MONTHLY ORDER REPORT
+ORDER ALERT
+LOW QUANTITY ALERT
+
+
+
+update monthly_order_report.php to fetch report from:
+order items table
+order tracking table
+and display result on the chart
+
+
+
+
+pending', 'shipped', 'delivered', 'canceled'
+
+
+
+
+ALTER TABLE users
+ADD COLUMN role_id ENUM('user', 'admin') DEFAULT 'user';
+
+
+ALTER TABLE roles
+ADD COLUMN description TEXT;
+
+
+
+ADD COLUMN user_id INT AUTO_INCREMENT PRIMARY KEY,
+ADD COLUMN username VARCHAR(50) NOT NULL UNIQUE,
+ADD COLUMN email VARCHAR(100) NOT NULL UNIQUE,
+ADD COLUMN full_name VARCHAR(100),
+
+
+
+ALTER TABLE users
+DROP FOREIGN KEY fk_role;
+
+
+CREATE TABLE roles (
+    role_id INT AUTO_INCREMENT PRIMARY KEY,
+    role_name VARCHAR(50) NOT NULL UNIQUE,
+    description TEXT
+);
+
+
+
+
+INSERT INTO roles (role_name, description) VALUES
+('user', 'Standard user with limited access'),
+('manager', 'Manager with additional privileges'),
+('admin', 'Administrator with full access');
+
+
+
+
+update roles table with:
+user
+manager
+admin
+
+
+
+
+ALTER TABLE users
+ADD CONSTRAINT fk_role
+FOREIGN KEY (role_id) REFERENCES roles(role_id)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+
+
+
+create hide_products.php so that admin can select some products to hide from users
+
+
+
+CREATE TABLE order_payment (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    user_id INT NOT NULL,
+    payment_method ENUM('Credit Card', 'Debit Card', 'PayPal', 'Bank Transfer', 'Cash On Delivery') NOT NULL,
+    payment_status ENUM('Pending', 'Completed', 'Failed', 'Refunded') NOT NULL,
+    payment_date DATETIME NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+create single_product.php to display individual product details from the product table
+
+
+
+create continue_shopping.php to display all available products according to their category
+add 'Add To Cart' button to each product
+add 'Product Detail' button to each product
+
+
+
+update cart.php so that:
+it has the product image
+it has a subtotal
+it calculates 7.5% of the subtotal as shipping rate
+it has continue shopping button
+it has proceed to checkout button
+
+
+update checkout.php to:
+accept two payment options
+payment by bank transfer
+payment by cash on delivery
+
+if payment by bank transfer:
+customer must attacth the bank transfer proof 
+
+
+correct this code:
+
+update product_upload.php to:
+display price in dollars
+display a responsive user friendly page
+
+update upload_product.php to:
+display a responsive user friendly page
+
+237050
+
+
+
+correct this code to:
+align the add another product and upload products buttons together
+add responsive user friendly footer
+
+
+
+correct this code:
+$query = "SELECT product_id, product_name, product_category, description, price, created_at, supplier, quantity, product_status, product_image FROM products WHERE product_status = 'available'";
+$result = mysqli_query($conn, $query);
+
+
+
+correct undefined variables
+catch all errors
+
+
+
+correct this code to:
+display the query on a responsive user dashboard page
+
+
+
+correct this code:
+to include product status
+
+
+
+create edit_product.php
+
+
+correct this code to:
+make each product image clickable
+when clicked on the image, it should open to the idividual product page
+
+
+
+correct this code to:
+check if user is loggedin 
+if user is not logedin, to direct to customer loging page
+if user is logedin, to add the product to user cart according to user id
+prompt add to cart success message 
+and ask if user want to continue shopping or to show user's shopping cart
+if continue shopping is clicked, redirect to category page
+if shpiing cart is cliecked, redirect to user's shopping cart
+
+
+
+create a add_to_cart.php for this html code:
+
+
+create a responsive user friendly front page that:
+displays up to 40 products
+breaks the products into 5 category
+list 8 products per page with the details:
+	product name
+	price
+	category
+	brand
+	product_image
+add to cart button to each product
+	when click on add to cart button, add the product to shopping cart
+	and store to session
+	
+add view more button to each product
+	when click on view more button, link to the singl product page to display full information
+
+add view shopping cart button to the page to link to shopping cart
+
+add checkout button to the page to link to checkout
+
+
+
+
+correct this code to:
+
+
+re-direct to user_dashboard.php
+
+
+
+
+update this code to prompt user to login when they click on the:
+view shopping cart
+checkout
+add to cart
+view more
+
+and redirect to the login page
+and after loggedin, to continue to the page clicked
+
+
+
+
+
+correct this code:
+the product image is not displaying
+
+
+correct this new_add_to_cart.php code:
+according to the php and html code
+
+
+
+correct the new_cart.php to:
+display a responsive user friendly page
+display product name
+display product image
+
+
+
+correct this code below based on:
+new_add_to_cart.php and new_cart.php
+
+
+
+correct the code below based on new_cart.php
+
+
+
+correct the code below, so that users can select the product to be deleted before deleting the product
+
+
+
+112 LATEEF JAKANDE CRESCENT
+OFF ALAKIJA EXTENSION
+LAGOS,
+NIGERIA
+
+
+correct order_confirmation.php based on the order_items table below:
+order_id
+product_id
+quantity
+price
+created_at
+product_image
+shipping_address
+user_id
+
+
+
+correct this code based on the order_items table below:
+order_id
+product_id
+quantity
+price
+created_at
+product_image
+shipping_address
+user_id
+
+
+
+
+
+
+
+
+correct this code to:
+prompt payment successful message
+redirect to the new_order_history.php if the payment was successful
+

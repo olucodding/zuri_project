@@ -1,0 +1,78 @@
+1. Add Products to Cart
+•	User Action: The user browses the product listings and clicks the "Add to Cart" button for the desired product(s).
+•	Backend Process:
+o	The add_to_cart.php script receives the product ID, user ID (if logged in), and the quantity.
+o	The script checks if the product is already in the user's cart.
+	If yes, it updates the quantity.
+	If no, it inserts a new record into the cart table with the product details, user ID, and quantity.
+o	The user is redirected to the cart.php page to view the cart.
+2. View and Manage Cart
+•	User Action: The user navigates to the cart.php page to view the items in their cart.
+•	Backend Process:
+o	The cart.php page queries the cart table for the current user's cart items.
+o	It calculates the subtotal (sum of the product prices times their quantities).
+o	A shipping fee (e.g., 7.5%) is added to the subtotal.
+o	The user can update quantities or remove items from the cart.
+o	If changes are made, the cart is updated in the database.
+
+3. Proceed to Checkout
+•	User Action: The user clicks the "Proceed to Checkout" button on the cart.php page.
+•	Backend Process:
+o	The user is redirected to the checkout.php page.
+o	The checkout.php page retrieves the cart items and calculates the total order amount (subtotal + shipping).
+o	The user is prompted to select a payment method (e.g., bank transfer, cash on delivery).
+o	If the user selects bank transfer, they must attach proof of payment.
+4. Submit Order
+•	User Action: The user reviews the order details and submits the order.
+•	Backend Process:
+o	The order details are inserted into the orders table, including the user ID, order date, total amount, and payment method.
+o	Each cart item is inserted into the order_items table linked to the order ID.
+o	The cart table is cleared for the user.
+o	If the payment method is bank transfer, the proof of payment is stored and associated with the order.
+5. Confirm Payment
+•	User Action: If the user selected bank transfer, they wait for payment confirmation.
+•	Backend Process:
+o	The system (or admin) verifies the bank transfer proof.
+o	Upon successful verification, the order status is updated to "Payment Confirmed".
+o	An email confirmation or order receipt is sent to the user.
+
+
+
+6. Order Processing and Fulfillment
+•	Backend Process:
+o	The order is processed, and the products are prepared for shipping.
+o	The inventory is updated by reducing the quantity of the ordered products.
+o	The order status is updated to "Shipped" once dispatched.
+7. Delivery and Order Completion
+•	User Action: The user receives the product(s).
+•	Backend Process:
+o	The order status is updated to "Delivered" upon successful delivery.
+o	The user is notified of the delivery, and the order is marked as complete.
+8. Post-Order Actions
+•	User Action: The user can leave feedback or request support.
+•	Backend Process:
+o	The system may prompt the user for reviews or ratings of the purchased products.
+o	The system archives the order for future reference.
+Each of these steps involves interactions between the front-end (user actions) and back-end (PHP scripts, database interactions) to ensure a seamless order processing workflow.
+
+
+UPDATES:
+STEP 3
+ADD TO ORDERS TABLE:
+SHIPPING ADDRESS
+PAYMENT_METHOD
+
+
+
+
+
+1. use add to cart
+2. use new_cart.php
+3. use new_checkout.php
+
+	or new_order_process.php
+4. use order_confirmation.php
+
+5. use new_continue_shopping.php
+
+6. use new_view_product.php
