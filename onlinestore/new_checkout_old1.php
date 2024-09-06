@@ -18,8 +18,7 @@ $user_stmt->execute();
 $user = $user_stmt->get_result()->fetch_assoc();
 
 // Fetch cart items
-$query = "SELECT cart.product_id, cart.quantity, cart.product_name, cart.product_price, cart.product_image, 
-                 (cart.quantity * cart.product_price) AS total_price
+$query = "SELECT cart.product_id, cart.quantity, cart.product_name, cart.product_price, cart.product_image, (cart.quantity * cart.product_price) AS total_price
           FROM cart
           JOIN products ON cart.product_id = products.product_id
           WHERE cart.user_id = ?";
@@ -45,15 +44,15 @@ $errors = [];
 
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $customer_name = $_POST['customer_name'];
+    $customer_name = trim($_POST['customer_name']);
     $shipping_address = trim($_POST['shipping_address']);
     $payment_method = $_POST['payment_method'];
     $proof_of_payment = null;
 
-    // Validate customer name
-    if (empty($customer_name)) {
-        $errors[] = "Your name is required.";
-    }
+  // Validate customer name
+  if (empty($customer_name)) {
+    $errors[] = "Your name is required.";
+}
 
     // Validate shipping address
     if (empty($shipping_address)) {
@@ -96,18 +95,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $order_query = "INSERT INTO orders (user_id, total, customer_name, shipping_address, payment_method, shipping_status, created_at) 
                             VALUES (?, ?, ?, ?, ?, 'Pending', NOW())";
             $order_stmt = $conn->prepare($order_query);
-            $order_stmt->bind_param("idsss", $user_id, $grand_total, $customer_name, $shipping_address, $payment_method);
+            $order_stmt->bind_param("idss", $user_id, $grand_total, $customer_name, $shipping_address, $payment_method);
             $order_stmt->execute();
             $order_id = $order_stmt->insert_id;
 
             // Insert each item into the order_items table
-            foreach ($cart_items as $item) {
-                $item_query = "INSERT INTO order_items (order_id, product_id, quantity, price, created_at) 
-                               VALUES (?, ?, ?, ?, NOW())";
-                $item_stmt = $conn->prepare($item_query);
-                $item_stmt->bind_param("iiid", $order_id, $item['product_id'], $item['quantity'], $item['product_price']);
-                $item_stmt->execute();
-            }
+            // foreach ($cart_items as $item) {
+            //     $item_query = "INSERT INTO order_items (order_id, product_id, quantity, price, created_at) 
+            //                    VALUES (?, ?, ?, ?, NOW())";
+            //     $item_stmt = $conn->prepare($item_query);
+            //     $item_stmt->bind_param("iiid", $order_id, $item['product_id'], $item['quantity'], $item['product_price']);
+            //     $item_stmt->execute();
+            // }
+
+            // Insert each item into the order_items table
+    foreach ($cart_items as $item) {
+    $item_query = "INSERT INTO order_items (order_id, product_id, customer_name, quantity, price, created_at) 
+                   VALUES (?, ?, ?, ?, ?, NOW())";
+    $item_stmt = $conn->prepare($item_query);
+    $item_stmt->bind_param("iiid", $order_id, $item['product_id'], $item['customer_name'], $item['quantity'], $item['product_price']);
+    $item_stmt->execute();
+}
 
             // Clear the cart
             $clear_cart_query = "DELETE FROM cart WHERE user_id = ?";
@@ -139,23 +147,27 @@ $conn->close();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
     <script>
-        window.addEventListener('popstate', function(event) {
-            if (sessionStorage.getItem('navigationHandled') !== 'true') {
-                if (confirm("Are you sure you want to go back?")) {
-                    sessionStorage.setItem('navigationHandled', 'true');
-                    history.back();
-                } else {
-                    sessionStorage.setItem('navigationHandled', 'true');
-                    history.pushState(null, null, window.location.href);
-                }
-            } else {
-                sessionStorage.setItem('navigationHandled', 'false');
-            }
-        });
 
-        history.pushState(null, null, window.location.href);
+window.addEventListener('popstate', function(event) {
+    if (sessionStorage.getItem('navigationHandled') !== 'true') {
+        if (confirm("Are you sure you want to go back?")) {
+            sessionStorage.setItem('navigationHandled', 'true');
+            history.back();
+        } else {
+            sessionStorage.setItem('navigationHandled', 'true');
+            history.pushState(null, null, window.location.href);
+        }
+    } else {
         sessionStorage.setItem('navigationHandled', 'false');
+    }
+});
+
+history.pushState(null, null, window.location.href);
+sessionStorage.setItem('navigationHandled', 'false');
+
+
     </script>
+
 
     <style>
         .product-img {
@@ -199,8 +211,8 @@ $conn->close();
 
         <form method="post" action="new_checkout.php" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="customer_name">Your Name</label>
-                <input type="text" name="customer_name" id="customer_name" class="form-control" required value="<?php echo htmlspecialchars($user['full_name']); ?>">
+                <label for="customer_name">Customer Name</label>
+                <textarea name="customer_name" id="customer_name" class="form-control" rows="4" required><?php echo htmlspecialchars($user['customer_name']); ?></textarea>
             </div>
 
             <div class="form-group">
@@ -227,20 +239,20 @@ $conn->close();
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Product</th>
+                            <th>Product Name</th>
                             <th>Image</th>
-                            <th>Quantity</th>
                             <th>Price</th>
-                            <th>Total</th>
+                            <th>Quantity</th>
+                            <th>Subtotal</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($cart_items as $item): ?>
                             <tr>
                                 <td><?php echo htmlspecialchars($item['product_name']); ?></td>
-                                <td><img src="uploads/<?php echo htmlspecialchars($item['product_image']); ?>" class="product-img" alt="Product Image"></td>
-                                <td><?php echo htmlspecialchars($item['quantity']); ?></td>
+                                <td><img src="manager/uploads/products/<?php echo htmlspecialchars($item['product_image']); ?>" alt="<?php echo htmlspecialchars($item['product_name']); ?>" class="product-img"></td>
                                 <td>$<?php echo number_format($item['product_price'], 2); ?></td>
+                                <td><?php echo htmlspecialchars($item['quantity']); ?></td>
                                 <td>$<?php echo number_format($item['total_price'], 2); ?></td>
                             </tr>
                         <?php endforeach; ?>
@@ -249,7 +261,7 @@ $conn->close();
                 <div class="totals">
                     <p>Subtotal: $<?php echo number_format($total, 2); ?></p>
                     <p>Shipping (7.5%): $<?php echo number_format($shipping_cost, 2); ?></p>
-                    <p><strong>Grand Total: $<?php echo number_format($grand_total, 2); ?></strong></p>
+                    <p>Total: $<?php echo number_format($grand_total, 2); ?></p>
                 </div>
             <?php else: ?>
                 <p>Your cart is empty.</p>
@@ -262,22 +274,25 @@ $conn->close();
         </form>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         function toggleProofOfPayment() {
-            const paymentMethod = document.getElementById('payment_method').value;
-            const proofOfPaymentSection = document.getElementById('proof_of_payment_section');
-
+            var paymentMethod = document.getElementById('payment_method').value;
+            var proofOfPaymentSection = document.getElementById('proof_of_payment_section');
+            
             if (paymentMethod === 'Bank Transfer') {
                 proofOfPaymentSection.style.display = 'block';
+                document.getElementById('proof_of_payment').required = true;
             } else {
                 proofOfPaymentSection.style.display = 'none';
+                document.getElementById('proof_of_payment').required = false;
             }
         }
 
-        // Trigger the toggle function on page load to handle default selection
-        window.onload = function() {
-            toggleProofOfPayment();
-        };
+        // Call the function on page load to handle initial state
+        toggleProofOfPayment();
     </script>
 </body>
 </html>

@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['product_id'])) {
     $product_id = intval($_POST['product_id']);
     $product_status = mysqli_real_escape_string($conn, $_POST['product_status']);
 
-    $update_query = "UPDATE products SET product_status = '$product_status' WHERE product_id = $product_id";
+    $update_query = "UPDATE order_tracking SET status = '$product_status' WHERE product_id = $product_id";
     if (mysqli_query($conn, $update_query)) {
         $success_message = "Product status updated successfully.";
     } else {

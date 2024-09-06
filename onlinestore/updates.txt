@@ -326,3 +326,11 @@ correct this code to:
 prompt payment successful message
 redirect to the new_order_history.php if the payment was successful
 
+create a responsive user friendly search.php to:
+display the search result 
+with a side bar for advanced search options such as:
+	search by category
+	search by brand
+	search by price range
+	search by color
+	search by size

@@ -385,6 +385,8 @@ sessionStorage.setItem('navigationHandled', 'false');
                 
 <!-- end side bar category Area -->    
 
+
+<!-- start user dashboard content Area --> 
 <div class="dashboard-container">
     <h2>Welcome, <?php echo htmlspecialchars($user['full_name']); ?></h2>
     <p>Manage your account efficiently from here.</p>
@@ -410,16 +412,18 @@ sessionStorage.setItem('navigationHandled', 'false');
 			<!-- <?php if (mysqli_num_rows($result) > 0): ?> -->
         <table>
         <tr>
-            <th>Order ID</th>
-            <th>Product Name</th>
-            <th>Order Date</th>
-            <th>Status</th>
+            <th style= "width: 5%">Order ID</th>
+            <th style= "width: 10%">Product Name</th>
+            <th style= "width: 15%">Order Date</th>
+			<th style= "width: 20%">Tracking Number</th>
+            <th style= "width: 25%">Status</th>
         </tr>
         <!-- <?php while ($row = mysqli_fetch_assoc($result)): ?> -->
         <tr>
             <td><?php echo $row['order_id']; ?></td>
             <td><?php echo $row['product_name']; ?></td>
-            <td><?php echo $row['order_date']; ?></td>
+            <td><?php echo $row['created_at']; ?></td>
+			<td><?php echo $row['tracking_number']; ?></td>
             <td><?php echo $row['order_status']; ?></td>
         </tr>
         <?php endwhile; ?>
@@ -435,9 +439,10 @@ sessionStorage.setItem('navigationHandled', 'false');
 	</div>
 	</div>
 	</div>
-
-
 <div>
+<!-- End user dashboard content Area -->
+
+
 <!-- start footer Area -->
 
   <!-- Footer -->

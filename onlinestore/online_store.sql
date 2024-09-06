@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2024 at 12:57 AM
+-- Generation Time: Aug 27, 2024 at 04:56 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -73,7 +73,7 @@ CREATE TABLE `managers` (
 --
 
 INSERT INTO `managers` (`manager_id`, `username`, `password`, `full_name`, `email`, `phone_number`, `created_at`, `updated_at`, `status`) VALUES
-(1, 'manager1', '$2y$10$KJ4qBYruHvK8usqYg3cdQ.xrU3FcX1RjOBk88Ro7rZqMj1OEul2xC', 'Mager Testing', 'manager@example.com', '2348000000001', '2024-08-11 18:16:16', '2024-08-11 18:16:16', 'active'),
+(1, 'manager1', '$2y$10$KJ4qBYruHvK8usqYg3cdQ.xrU3FcX1RjOBk88Ro7rZqMj1OEul2xC', 'Mager Testing', 'manager@example.com', '2348000000001', '2024-08-11 18:16:16', '2024-08-21 00:37:27', 'suspended'),
 (3, 'manager2', '$2y$10$p5cKQnvePbZPhxTehDx/lOHyP1dSNohE/f7VpSLLTWk2DYu7ao97O', 'manager2 teasting2', 'manager2@example.com', '2348000000002', '2024-08-11 18:25:53', '2024-08-11 18:25:53', 'active');
 
 -- --------------------------------------------------------
@@ -120,7 +120,8 @@ INSERT INTO `orders` (`order_id`, `user_id`, `total`, `created_at`, `customer_na
 (20, 1, 849.25, '2024-08-20 13:06:49', NULL, NULL, 'pending', NULL, NULL, NULL, NULL, NULL, 'Pending', '112 LATEEF JAKANDE CRESCENT\r\nOFF ALAKIJA EXTENSION\r\nLAGOS,\r\nNIGERIA', 'Bank Transfer', 'Pending', ''),
 (21, 1, 1472.75, '2024-08-20 13:12:04', NULL, NULL, 'pending', NULL, NULL, NULL, NULL, NULL, 'Pending', '112 LATEEF JAKANDE CRESCENT\r\nOFF ALAKIJA EXTENSION\r\nLAGOS,\r\nNIGERIA', 'Bank Transfer', 'Pending', ''),
 (22, 4, 8600.00, '2024-08-20 18:33:07', NULL, NULL, 'pending', NULL, NULL, NULL, NULL, NULL, 'Pending', '112 LATEEF JAKANDE CRESCENT\r\nOFF ALAKIJA EXTENSION\r\nLAGOS,\r\nNIGERIA', 'Bank Transfer', 'Pending', ''),
-(23, 4, 5724.38, '2024-08-20 18:34:45', NULL, NULL, 'pending', NULL, NULL, NULL, NULL, NULL, 'Pending', '112 LATEEF JAKANDE CRESCENT\r\nOFF ALAKIJA EXTENSION\r\nLAGOS,\r\nNIGERIA', 'Bank Transfer', 'Pending', '');
+(23, 4, 5724.38, '2024-08-20 18:34:45', NULL, NULL, 'pending', NULL, NULL, NULL, NULL, NULL, 'Pending', '112 LATEEF JAKANDE CRESCENT\r\nOFF ALAKIJA EXTENSION\r\nLAGOS,\r\nNIGERIA', 'Bank Transfer', 'Pending', ''),
+(24, 1, 4644.00, '2024-08-21 00:47:42', NULL, NULL, 'pending', NULL, NULL, NULL, NULL, NULL, 'Pending', '112 LATEEF JAKANDE CRESCENT\r\nOFF ALAKIJA EXTENSION\r\nLAGOS,\r\nNIGERIA', 'Bank Transfer', 'Pending', '');
 
 -- --------------------------------------------------------
 
@@ -207,7 +208,10 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `price`, 
 (45, 23, 2, 7, 270.00, '2024-08-20 18:34:45', NULL, NULL, 0),
 (46, 23, 1, 4, 265.00, '2024-08-20 18:34:45', NULL, NULL, 0),
 (47, 23, 3, 5, 255.00, '2024-08-20 18:34:45', NULL, NULL, 0),
-(48, 23, 4, 4, 275.00, '2024-08-20 18:34:45', NULL, NULL, 0);
+(48, 23, 4, 4, 275.00, '2024-08-20 18:34:45', NULL, NULL, 0),
+(49, 24, 3, 4, 255.00, '2024-08-21 00:47:42', NULL, NULL, 0),
+(50, 24, 4, 4, 275.00, '2024-08-21 00:47:42', NULL, NULL, 0),
+(51, 24, 1, 8, 275.00, '2024-08-21 00:47:42', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -266,10 +270,11 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `description`, `price`, `created_at`, `category`, `brand`, `supplier`, `quantity`, `product_image`, `product_status`, `hidden`) VALUES
-(1, 'black grey double monkstraps', 'black grey double monkstraps', 265.99, '2024-08-19 21:34:58', 'CUSTOM SHOES', 'PARSONS', '', 130, 'black-grey-double-monkstraps-PARSONS.jpg', 'active', 1),
-(2, 'black grey double monkstraps', 'black grey double monkstraps', 270.00, '2024-08-18 19:45:50', 'CUSTOM SHOES', 'PARSONS', '', 68, 'black-grey-double-monkstraps-PARSONS.jpg', 'active', 1),
+(1, 'black grey double monkstraps', 'black grey double monkstraps', 275.99, '2024-08-19 21:34:58', 'CUSTOM SHOES', 'PARSONS', '', 130, 'black-grey-double-monkstraps-PARSONS.jpg', 'active', 0),
+(2, 'black grey double monkstraps', 'black grey double monkstraps', 240.99, '2024-08-18 19:45:50', 'CUSTOM SHOES', 'PARSONS', '', 68, 'black-grey-double-monkstraps-PARSONS.jpg', 'active', 0),
 (3, 'black grey double monkstraps', 'black grey double monkstraps', 255.99, '2024-08-18 19:57:18', 'CUSTOM SHOES', 'PARSONS', '', 105, 'black-grey-double-monkstraps-PARSONS.jpg', 'active', 0),
-(4, 'brown croco moc-toe shoes', '', 275.99, '2024-08-18 20:27:00', 'CUSTOM SHOES', 'EAVES', '', 121, 'brown-croco-moc-toe-EAVES.jpg', 'active', 0);
+(4, 'brown croco moc-toe shoes', '', 275.99, '2024-08-18 20:27:00', 'CUSTOM SHOES', 'EAVES', '', 121, 'brown-croco-moc-toe-EAVES.jpg', 'active', 0),
+(5, 'test run shoes', 'test run shoes', 285.99, '2024-08-21 00:28:53', 'tr', NULL, 'trytr', 50, 'Saddle-Shoes-LOGAN.jpg', '', 0);
 
 -- --------------------------------------------------------
 
@@ -440,7 +445,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `managers`
@@ -452,7 +457,7 @@ ALTER TABLE `managers`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `order_history`
@@ -464,7 +469,7 @@ ALTER TABLE `order_history`
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `order_payment`
@@ -482,7 +487,7 @@ ALTER TABLE `order_tracking`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `roles`

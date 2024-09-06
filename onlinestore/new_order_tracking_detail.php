@@ -139,7 +139,7 @@ $tracking_result = $tracking_stmt->get_result();
         <p class="no-tracking">No tracking information available for this order.</p>
         <?php endif; ?>
 
-        <a href="order_history.php" class="back-to-orders">Back to Order History</a>
+        <a href="new_order_history.php" class="back-to-orders">Back to Order History</a>
     </div>
 </body>
 </html>

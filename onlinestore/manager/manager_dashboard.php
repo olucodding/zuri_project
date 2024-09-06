@@ -19,11 +19,22 @@ $low_stock_query = "SELECT * FROM products WHERE quantity < 10";
 $low_stock_result = mysqli_query($conn, $low_stock_query);
 
 // Fetch recent orders
-$recent_orders_query = "SELECT * FROM orders ORDER BY order_date DESC LIMIT 10";
+// $recent_orders_query = "SELECT * FROM orders ORDER BY order_date DESC LIMIT 10";
+// $recent_orders_result = mysqli_query($conn, $recent_orders_query);
+
+
+// Fetch recent orders with full_name from users table
+$recent_orders_query = "
+    SELECT orders.*, users.full_name 
+    FROM orders 
+    JOIN users ON orders.user_id = users.user_id 
+    ORDER BY orders.order_date DESC 
+    LIMIT 10";
 $recent_orders_result = mysqli_query($conn, $recent_orders_query);
 
+
 // Fetch order tracking details
-$order_tracking_query = "SELECT * FROM order_tracking WHERE status='pending' ORDER BY created_at DESC";
+$order_tracking_query = "SELECT * FROM orders WHERE order_status='pending' ORDER BY created_at DESC";
 $order_tracking_result = mysqli_query($conn, $order_tracking_query);
 
 // Close the database connection
@@ -390,27 +401,27 @@ sessionStorage.setItem('navigationHandled', 'false');
             <?php else: ?>
                 <p>No low stock items.</p>
             <?php endif; ?>
-        </div>
+        </div><br><br>
 
-        <div class="section">
+        <div class="section2">
             <h3>Recent Orders</h3>
             <?php if (mysqli_num_rows($recent_orders_result) > 0): ?>
                 <table>
                     <thead>
                         <tr>
-                            <th>Order ID</th>
-                            <th>Customer Name</th>
-                            <th>Order Date</th>
-                            <th>Total</th>
+						<th style="width: 5%;">Order ID</th>
+                        <th style="width: 10%;">Customer Name</th>
+                        <th style="width: 10%;">Order Date</th>
+                        <th style="width: 20%;">Total</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php while ($order = mysqli_fetch_assoc($recent_orders_result)): ?>
                             <tr>
-                                <td><?php echo htmlspecialchars($order['order_id']); ?></td>
-                                <td><?php echo htmlspecialchars($order['customer_name']); ?></td>
-                                <td><?php echo htmlspecialchars($order['order_date']); ?></td>
-                                <td><?php echo htmlspecialchars($order['total']); ?></td>
+							<td data-label="Order ID"><?php echo htmlspecialchars($order['order_id']); ?></td>
+                            <td data-label="Customer Name"><?php echo htmlspecialchars($order['full_name']); ?></td>
+                            <td data-label="Order Date"><?php echo htmlspecialchars($order['created_at']); ?></td>
+                            <td data-label="Total"><?php echo htmlspecialchars($order['total']); ?></td>
                             </tr>
                         <?php endwhile; ?>
                     </tbody>
@@ -418,24 +429,26 @@ sessionStorage.setItem('navigationHandled', 'false');
             <?php else: ?>
                 <p>No recent orders.</p>
             <?php endif; ?>
-        </div>
+        </div><br><br>
 
-        <div class="section">
+        
+		<div class="section">
             <h3>Order Tracking</h3>
             <?php if (mysqli_num_rows($order_tracking_result) > 0): ?>
                 <table>
                     <thead>
                         <tr>
-                            <th>Order ID</th>
-                            <th>Status</th>
-                            <th>Created At</th>
+                            <th style= "width: 5%">Order ID</th>
+                            <th style= "width: 10%">Status</th>
+                            <th style= "width: 10%">Created At</th>
+							<th style= "width: 20%"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php while ($tracking = mysqli_fetch_assoc($order_tracking_result)): ?>
                             <tr>
                                 <td><?php echo htmlspecialchars($tracking['order_id']); ?></td>
-                                <td><?php echo htmlspecialchars($tracking['status']); ?></td>
+                                <td><?php echo htmlspecialchars($tracking['order_status']); ?></td>
                                 <td><?php echo htmlspecialchars($tracking['created_at']); ?></td>
                             </tr>
                         <?php endwhile; ?>
@@ -445,6 +458,7 @@ sessionStorage.setItem('navigationHandled', 'false');
                 <p>No orders to track.</p>
             <?php endif; ?>
         </div>
+
     </div>
 </div>
 

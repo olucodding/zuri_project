@@ -5,10 +5,10 @@ session_start();
 include 'includes/db.php';
 
 // Check if the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header("Location: customer_login.php");
-    exit();
-}
+// if (!isset($_SESSION['user_id'])) {
+//     header("Location: customer_login.php");
+//     exit();
+// }
 
 
 // Fetch up to 40 products that are active and not hidden
@@ -158,7 +158,7 @@ function addToCart($product_id, $quantity) {
             <a href="new_cart.php">View Shopping Cart</a>
             <a href="new_order_history.php">View Order History</a>
             <a href="new_checkout.php">Checkout</a>
-            <a href="users/user_dashboard.php">My Dashboard</a>
+            <a href="customer_login.php">My Dashboard</a>
             <a href="logout.php">Logout</a>
         </div>
     </div>

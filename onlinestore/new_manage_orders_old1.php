@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-// Uncomment and configure the following lines for role-based access control
+// Check if the user is logged in and has the appropriate role (e.g., admin or manager)
+// Uncomment the following lines if you have role-based access
 // if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 //     header('Location: login.php');
 //     exit();
@@ -17,10 +18,10 @@ $result = mysqli_query($conn, $sql);
 // Handle order status update
 if (isset($_POST['update_status'])) {
     $order_id = $_POST['order_id'];
-    $status = $_POST['product_status'];
+    $status = $_POST['status'];
 
     // Use prepared statements to prevent SQL injection
-    $stmt = $conn->prepare("UPDATE orders SET product_status = ? WHERE order_id = ?");
+    $stmt = $conn->prepare("UPDATE orders SET order_status = ? WHERE order_id = ?");
     $stmt->bind_param("si", $status, $order_id);
     if ($stmt->execute()) {
         header('Location: new_manage_orders.php');
@@ -44,7 +45,7 @@ mysqli_close($conn);
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/main.css">
     <style>
-        /* Basic styles for table and buttons */
+        /* Basic table and button styles */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -59,10 +60,6 @@ mysqli_close($conn);
             max-width: 1200px;
             margin: 0 auto;
             overflow-x: auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         table {
             width: 100%;
@@ -129,24 +126,24 @@ mysqli_close($conn);
         <tbody>
             <?php while ($row = mysqli_fetch_assoc($result)) { ?>
             <tr>
-                <td><?php echo htmlspecialchars($row['order_id']); ?></td>
+                <td><?php echo $row['order_id']; ?></td>
                 <td><?php echo htmlspecialchars($row['customer_name']); ?></td>
                 <td><?php echo htmlspecialchars($row['created_at']); ?></td>
                 <td>$<?php echo number_format($row['total'], 2); ?></td>
                 <td>
                     <form method="POST" action="new_manage_orders.php" style="display:inline;">
-                        <input type="hidden" name="order_id" value="<?php echo htmlspecialchars($row['order_id']); ?>">
+                        <input type="hidden" name="order_id" value="<?php echo $row['order_id']; ?>">
                         <select name="status" onchange="this.form.submit()">
-                            <option value="pending" <?php echo $row['product_status'] == 'pending' ? 'selected' : ''; ?>>Pending</option>
-                            <option value="shipped" <?php echo $row['product_status'] == 'shipped' ? 'selected' : ''; ?>>Shipped</option>
-                            <option value="delivered" <?php echo $row['product_status'] == 'delivered' ? 'selected' : ''; ?>>Delivered</option>
-                            <option value="cancelled" <?php echo $row['product_status'] == 'cancelled' ? 'selected' : ''; ?>>Cancelled</option>
+                            <option value="pending" <?php echo $row['order_status'] == 'pending' ? 'selected' : ''; ?>>Pending</option>
+                            <option value="shipped" <?php echo $row['order_status'] == 'shipped' ? 'selected' : ''; ?>>Shipped</option>
+                            <option value="delivered" <?php echo $row['order_status'] == 'delivered' ? 'selected' : ''; ?>>Delivered</option>
+                            <option value="cancelled" <?php echo $row['order_status'] == 'cancelled' ? 'selected' : ''; ?>>Cancelled</option>
                         </select>
                         <button type="submit" name="update_status" class="btn">Update Status</button>
                     </form>
                 </td>
                 <td>
-                    <a href="new_order_details.php?order_id=<?php echo htmlspecialchars($row['order_id']); ?>" class="btn btn-info">View Details</a>
+                    <a href="new_order_details.php?order_id=<?php echo $row['order_id']; ?>" class="btn btn-info">View Details</a>
                 </td>
             </tr>
             <?php } ?>

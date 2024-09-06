@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="js/script.js">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">My Online Store</a></h1>
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="users/customer_login.html">Customer Login</a></li>
+                    <li><a href="users/register.php">Customer Register</a></li>
+                    <li><a href="manager/manager_login.php">Manager Login</a></li>
+                    <li><a href="manager/register_manager.php">Manager Register</a></li>
+
+                    <!-- <?php if (isset($_SESSION['username'])): ?>
+                    <li><a href="dashboard.php">Dashboard</a></li>
+                    <li><a href="logout.php">Logout</a></li>
+                    <li><a href="dashboard.php">Hello, <?php echo htmlspecialchars($_SESSION['username']); ?></a></li>
+                <?php else: ?>
+                    <li><a href="login2.php">Login</a></li>
+                <?php endif; ?> -->
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h2>Welcome to My Online Store</h2>
+                <p>Discover the best products at unbeatable prices.</p>
+                <a href="products.php" class="btn">Shop Now</a>
+            </section>
+
+            <!-- Featured Products Section -->
+            <section class="featured-products">
+                <h2>Featured Products</h2>
+                <div class="products-grid">
+                    <!-- Example Product -->
+                    <div class="product-item">
+                        <img src="path/to/product-image.jpg" alt="Product Name">
+                        <h3>Product Name</h3>
+                        <p>$29.99</p>
+                        <a href="product_details.php?id=1" class="btn">View Product</a>
+                    </div>
+                    <!-- Add more products here -->
+                </div>
+            </section>
+
+            <!-- Newsletter Section -->
+            <section class="newsletter">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter to receive the latest news and exclusive offers.</p>
+                <form action="#" method="POST">
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 My Online Store. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
